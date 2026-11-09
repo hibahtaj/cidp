@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
     PATH = "/usr/local/bin:/opt/homebrew/bin:${env.PATH}"
-}
+
     
         PORT = '5055'
         BASE_URL = 'http://127.0.0.1:5055'
