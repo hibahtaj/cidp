@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exam-registration
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: exam-registration
+  template:
+    metadata:
+      labels:
+        app: exam-registration
+    spec:
+      containers:
+        - name: web
+          image: exam-registration:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5055
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5055
+            initialDelaySeconds: 2
+            periodSeconds: 5
